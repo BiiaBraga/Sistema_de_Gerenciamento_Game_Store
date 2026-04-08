@@ -3,6 +3,7 @@ import { CategoriaModule } from "../categoria/categoria.module";
 import { Produto } from "./entities/produto.entity";
 import { Module } from "@nestjs/common";
 import { ProdutoService } from "./services/produto.service";
+import { ProdutosController } from "./controllers/produto.controller";
 
 
 @Module({
