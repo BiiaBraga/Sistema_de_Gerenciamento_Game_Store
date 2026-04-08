@@ -42,7 +42,7 @@ export class CategoriaService{
 
     //método que encontra categoria pela descrição
     async findAllByDescricao(descricao: string): Promise<Categoria[]> {
-        return await this.categoriaRepository.find({
+        const description = await this.categoriaRepository.find({
             where: {
                 descricao: ILike(`%${descricao}%`)
             },
@@ -50,6 +50,11 @@ export class CategoriaService{
                 produto: true
             }
         })
+
+        if(description.length === 0)
+            throw new HttpException('Nenhuma categoria encontrada!', HttpStatus.NOT_FOUND);
+
+        return description;
     }
 
     //método que cria uma categoria nova

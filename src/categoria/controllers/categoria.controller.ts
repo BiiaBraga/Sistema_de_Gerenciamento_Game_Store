@@ -1,11 +1,14 @@
 //importações
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put } from "@nestjs/common";
 import { Categoria } from "../entities/categoria.entity";
+import { CategoriaService } from "../services/categoria.service";
 
 //Controller
 @Controller("/categorias")
 export class CategoriaController{
-    categoriaService: any;
+    
+    //construtor
+    constructor(private readonly categoriaService: CategoriaService) { }
 
     @Get()
     @HttpCode(HttpStatus.OK)
@@ -22,7 +25,7 @@ export class CategoriaController{
     @Get('/descricao/:descricao')
     @HttpCode(HttpStatus.OK)
     findAllByDescricao(@Param('descricao') descricao: string): Promise <Categoria[]>{
-        return this.categoriaService.findAllByName(descricao);
+        return this.categoriaService.findAllByDescricao(descricao);
     }
     
     @Post()

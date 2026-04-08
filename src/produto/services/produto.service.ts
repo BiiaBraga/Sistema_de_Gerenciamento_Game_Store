@@ -43,7 +43,7 @@ export class ProdutoService{
 
     //metódo para encontrar as produto por nome
     async findAllByName(nome: string): Promise<Produto[]> {
-        return await this.produtoRepository.find({
+        const produto = await this.produtoRepository.find({
             where: {
                 nome: ILike(`%${nome}%`)
             },
@@ -51,6 +51,11 @@ export class ProdutoService{
                 categoria: true
             }
         });
+
+        if(produto.length === 0)
+            throw new HttpException('Produto nao encontrado!', HttpStatus.NOT_FOUND);
+
+        return produto;
     }
 
     //método que cadastra produto no bd

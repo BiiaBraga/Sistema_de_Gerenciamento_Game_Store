@@ -1,8 +1,9 @@
 //importações
-import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Produto } from "../../produto/entities/produto.entity";
 import { IsNotEmpty } from "class-validator";
 
+@Entity()
 export class Categoria{
 
     //atributos

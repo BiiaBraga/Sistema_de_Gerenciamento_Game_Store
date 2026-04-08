@@ -1,11 +1,14 @@
 //importações
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put } from "@nestjs/common";
 import { Produto } from "../entities/produto.entity";
+import { ProdutoService } from "../services/produto.service";
 
 //Controller
 @Controller("/produtos")
 export class ProdutosController {
-    produtoService: any;
+    
+    //construtor
+    constructor(private readonly produtoService: ProdutoService) { }
 
     @Get()
     @HttpCode(HttpStatus.OK)

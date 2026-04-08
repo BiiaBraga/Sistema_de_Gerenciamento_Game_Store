@@ -5,7 +5,6 @@ import { Module } from "@nestjs/common";
 import { ProdutoService } from "./services/produto.service";
 import { ProdutosController } from "./controllers/produto.controller";
 
-
 @Module({
     imports: [TypeOrmModule.forFeature([Produto]), CategoriaModule], 
     providers: [ProdutoService],
