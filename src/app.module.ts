@@ -14,7 +14,7 @@ import { CategoriaModule } from './categoria/categoria.module';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'db_gamesstore',
+      database: 'db_gamestore',
       entities: [Produto, Categoria],
       synchronize: true,
     }),
